@@ -271,7 +271,7 @@ local ImageJob = function(item, ctx, fn)
         end
 
         local w, h = res:size()
-        local multisample = w / 352 > 0.8 or h / 128 > 0.8
+        local multisample = w / 128 > 0.8 or h / 352 > 0.8
         local shader = multisample and shaders.multisample or shaders.simple
         
         while true do
@@ -283,7 +283,7 @@ local ImageJob = function(item, ctx, fn)
                 s = lerp(from.s, to.s, t);
             }
 --            util.draw_correct(res, 0, 0, WIDTH, HEIGHT, ramp(
-            util.draw_correct(res, 0, 0, 352, 128, ramp(
+            util.draw_correct(res, 0, 0, 128, 352, ramp(
                 ctx.starts, ctx.ends, now, Config.get_switch_time()
             ))
             draw_progress(ctx.starts, ctx.ends, now)

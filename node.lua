@@ -271,7 +271,7 @@ local ImageJob = function(item, ctx, fn)
         end
 
         local w, h = res:size()
-        local multisample = w / WIDTH > 0.8 or h / HEIGHT > 0.8
+        local multisample = w / 352 > 0.8 or h / 128 > 0.8
         local shader = multisample and shaders.multisample or shaders.simple
         
         while true do

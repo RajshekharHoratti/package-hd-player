@@ -263,12 +263,14 @@ local ImageJob = function(item, ctx, fn)
             {from = {x=0.07, y=0.05, s=0.91}, to = {x=0.04, y=0.03, s=0.95}},
         }
 
+
         local path = paths[math.random(1, #paths)]
 
         local to, from = path.to, path.from
         if math.random() >= 0.5 then
             to, from = from, to
         end
+
 
         local w, h = res:size()
         local multisample = w / WIDTH > 0.8 or h / HEIGHT > 0.8
@@ -282,7 +284,7 @@ local ImageJob = function(item, ctx, fn)
                 y = lerp(from.y, to.y, t);
                 s = lerp(from.s, to.s, t);
             }
-            util.draw_correct(res, 0, 0, WIDTH, HEIGHT, ramp(
+            util.draw_correct(res, 0, 0, 128, 352, ramp(
 --            util.draw_correct(res, 0, 0, 352, 128, ramp(
                 ctx.starts, ctx.ends, now, Config.get_switch_time()
             ))

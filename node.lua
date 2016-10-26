@@ -341,11 +341,8 @@ local VideoJob = function(item, ctx, fn)
 
     while true do
         local now = sys.now()
-        local width = 352 --> Changed
-        local height = 128 --> Changed
-        local state --> Changed
         local rotation, portrait = Config.get_rotation()
-        state, width, height = res:state() --> Changed
+        local state, width, height = res:state()
         if state ~= "finished" then
             local layer = -2
             if now > ctx.starts + 0.1 then
@@ -358,7 +355,7 @@ local VideoJob = function(item, ctx, fn)
             if portrait then
                 width, height = height, width
             end
-            local x1, y1, x2, y2 = util.scale_into(NATIVE_WIDTH, NATIVE_HEIGHT, width, height)
+            local x1, y1, x2, y2 = util.scale_into(NATIVE_WIDTH, NATIVE_HEIGHT, 352, 128)
             res:layer(layer):rotate(rotation):target(x1, y1, x2, y2, ramp(
                 ctx.starts, ctx.ends, now, Config.get_switch_time()
             ))

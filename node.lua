@@ -80,8 +80,8 @@ local function cycled(items, offset)
 end
 
 local Loading = (function()
-    local loading = "Loading..."
-    local size = 80
+    local loading = "Loading... PIXZEE :)"  --> Changed
+    local size = 160 --> Changed
     local w = font:width(loading, size)
     local alpha = 0
     
@@ -282,7 +282,8 @@ local ImageJob = function(item, ctx, fn)
                 y = lerp(from.y, to.y, t);
                 s = lerp(from.s, to.s, t);
             }
-            util.draw_correct(res, 0, 0, WIDTH, HEIGHT, ramp(
+--            util.draw_correct(res, 0, 0, WIDTH, HEIGHT, ramp(
+            util.draw_correct(res, 0, 0, 352, 128, ramp(
                 ctx.starts, ctx.ends, now, Config.get_switch_time()
             ))
             draw_progress(ctx.starts, ctx.ends, now)
@@ -294,7 +295,7 @@ local ImageJob = function(item, ctx, fn)
     else
         while true do
             local now = sys.now()
-            util.draw_correct(res, 0, 0, WIDTH, HEIGHT, ramp(
+            util.draw_correct(res, 0, 0, 352, 128, ramp(
                 ctx.starts, ctx.ends, now, Config.get_switch_time()
             ))
             draw_progress(ctx.starts, ctx.ends, now)
@@ -340,8 +341,11 @@ local VideoJob = function(item, ctx, fn)
 
     while true do
         local now = sys.now()
+        local width = 352 --> Changed
+        local height = 128 --> Changed
+        local state --> Changed
         local rotation, portrait = Config.get_rotation()
-        local state, width, height = res:state()
+        state, width, height = res:state() --> Changed
         if state ~= "finished" then
             local layer = -2
             if now > ctx.starts + 0.1 then

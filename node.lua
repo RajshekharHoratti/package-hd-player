@@ -295,7 +295,7 @@ local ImageJob = function(item, ctx, fn)
     else
         while true do
             local now = sys.now()
-            util.draw_correct(res, 0, 0, 352, 128, ramp(
+            util.draw_correct(res, 0, 0, WIDTH, HEIGHT, ramp(
                 ctx.starts, ctx.ends, now, Config.get_switch_time()
             ))
             draw_progress(ctx.starts, ctx.ends, now)
